@@ -3,9 +3,11 @@
 
 # Wireless starter and Interface checker by Kenvix <i@kenvix.com>
 
-# Start mtk wifi
+echo "Unbind USB3.0"
+echo '1-1' | sudo tee /sys/bus/usb/drivers/usb/unbind
 
-sleep 5s
+sleep 8s
+echo "Start mtk wifi"
 # 2.4GHz
 ip link set ra0 up
 brctl addif br-lan ra0
@@ -16,10 +18,15 @@ brctl addif br-lan rai0
 
 echo "Wireless interface started"
 
-sleep 2s
+sleep 8s
+echo "Set lanCheck rai0 ra0"
 lanCheck=`uci get network.lan.ifname`
 uci set network.lan.ifname="$lanCheck rai0 ra0"
 uci commit
+echo "Set lanCheck rai0 ra0 end!"
 
+sleep 5s
+echo "Bind USB3.0"
+echo '1-1' | sudo tee /sys/bus/usb/drivers/usb/bind
 
 exit 0
