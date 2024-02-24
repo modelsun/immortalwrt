@@ -18,7 +18,7 @@ start() {
 	iwpriv apclii0 set ApCliAutoConnect=0
 	iwpriv apclii0 set ApCliAutoConnect=1
 	iwpriv apclii0 set ApCliAutoConnect=3
-	iwpriv apclii0 set ApCliEnable=1
+	iwpriv apclii0 set ApCliEnable=0
 	fi
 	
 	ssid=$(grep -e "ApCliSsid=" /etc/wireless/mt7615/mt7615.1.dat)
@@ -30,7 +30,7 @@ start() {
     	iwpriv apcli0 set ApCliAutoConnect=0
     	iwpriv apcli0 set ApCliAutoConnect=1
 	iwpriv apcli0 set ApCliAutoConnect=3
-	iwpriv apcli0 set ApCliEnable=1
+	iwpriv apcli0 set ApCliEnable=0
 	fi
 }
 
